@@ -1,15 +1,9 @@
 pipeline:
 
-
-  setup:
-    image: python:3.7.3-slim
-    commands:
-      - apt update && apt install -y git
-
   test:
     image: python:3.7.3-slim
     commands:
-      # - apt update && apt install -y git
+      - apt update && apt install -y git
       - git clone https://github.com/gleitz/howdoi.git
       - cd howdoi
       - pip install -r requirements.txt
