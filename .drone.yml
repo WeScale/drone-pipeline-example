@@ -1,6 +1,17 @@
 pipeline:
-  build:
-    image: python:3.5.1-alpine
-    commands:
-      - echo "pass"
 
+  test:
+    image: python:3.7.3-slim
+    commands:
+      - apt update && apt install -y git
+      - git clone https://github.com/gleitz/howdoi.git
+      - cd howdoi
+      - pip install -r requirements.txt
+      - pip install pytest
+      - pytest
+
+  execute:
+    image: python:3.7.3-slim
+    commands:
+      - pip install howdoi
+      - howdoi split spaces
