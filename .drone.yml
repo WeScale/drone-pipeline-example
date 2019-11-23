@@ -3,10 +3,14 @@ pipeline:
   test:
     image: python:3.5.1-alpine
     commands:
-      - echo "pass"
+      - git clone https://github.com/gleitz/howdoi.git
+      - cd howdoi
+      - pip install pytest
+      - pip install -r requirements.txt
+      - pytest
 
   execute:
     image: python:3.5.1-alpine
     commands:
-      - echo "pass"
-
+      - pip install howdoi
+      - howdoi split spaces
